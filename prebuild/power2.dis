@@ -1,0 +1,24 @@
+00000000  BB0A00            mov bx,0xa
+00000003  C687000230        mov byte [bx+0x200],0x30
+00000008  4B                dec bx
+00000009  75F8              jnz 0x3
+0000000B  66C7060A02312400  mov dword [0x20a],0x2431
+         -00
+00000014  B90A00            mov cx,0xa
+00000017  BB0A00            mov bx,0xa
+0000001A  31C0              xor ax,ax
+0000001C  8A870002          mov al,[bx+0x200]
+00000020  9E                sahf
+00000021  10C0              adc al,al
+00000023  37                aaa
+00000024  9F                lahf
+00000025  0C30              or al,0x30
+00000027  88870002          mov [bx+0x200],al
+0000002B  4B                dec bx
+0000002C  75EE              jnz 0x1c
+0000002E  BA0002            mov dx,0x200
+00000031  B409              mov ah,0x9
+00000033  CD21              int 0x21
+00000035  49                dec cx
+00000036  75DF              jnz 0x17
+00000038  C3                ret

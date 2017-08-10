@@ -1,0 +1,20 @@
+00000000  66C7062D01B95003  mov dword [0x12d],0xbf0350b9
+         -BF
+00000009  66C70639019E10C0  mov dword [0x139],0x37c0109e
+         -37
+00000012  66C706450175EE66  mov dword [0x145],0xc766ee75
+         -C7
+0000001B  66C70651010002B4  mov dword [0x151],0x9b40200
+         -09
+00000024  66C7065D01064B01  mov dword [0x15d],0x9014b06
+         -09
+0000002D  6667C780FF0031C0  mov dword [eax-0x3fceff01],0x200858a
+         -8A850002
+00000039  6667C7809FB03088  mov dword [eax-0x77cf4f61],0x4f020085
+         -8500024F
+00000045  6667C78006FF0231  mov dword [eax+0x3102ff06],0xba240a0d
+         -0D0A24BA
+00000051  6667C780CD21C606  mov dword [eax+0x6c621cd],0xc60c013e
+         -3E010CC6
+0000005D  6667C780E2CDC300  mov dword [eax+0xc3cde2],0x0
+         -00000000

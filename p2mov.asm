@@ -1,0 +1,24 @@
+org 100h
+section .text
+
+start:
+
+  mov dword [0x12d],0xbf0350b9
+
+  mov dword [0x139],0x37c0109e
+
+  mov dword [0x145],0xc766ee75
+
+  mov dword [0x151],0x09b40200
+
+  mov dword [0x15d],0x09014b06
+
+  mov dword [eax-0x3fceff01],0x200858a
+
+  mov dword [eax-0x77cf4f61],0x4f020085
+
+  mov dword [eax+0x3102ff06],0xba240a0d
+
+  mov dword [eax+0x6c621cd],0xc60c013e
+
+  mov dword [eax+0xc3cde2],0x000000000
