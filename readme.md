@@ -1,18 +1,30 @@
 What Is This?
 -------------
 
-I recently attended VCF West at the Computer History Museum.  During the medium-iron restoration panel, someone mentioned the single-card powers of two program, which makes use of the variable-sized BCD buffers.  There was also a joke about this not being possible on x86, and I think someone also threw the figure of 10 instructions out there.
+I recently attended VCF West at the Computer History Museum.  During the medium-iron restoration panel, someone mentioned the single-card powers of two program which runs on an IBM1401.  There was also a joke about this not being possible on x86, and I think someone also threw the figure of 10 instructions out there.  Looking online, there is a 1-card power of 2program.  A card for one of these machines is 80 columns, but each character is 6-bit.  This gives me 60 bytes.  Can I do this in 60 bytes?
 
 Here I have 55 byte x86 executable (for DOS) that computes and prints all the powers of 2 up to 255 decimal digits.  When taken as base64 (which gives 6 bits of data per character), this comes out to 77 columns.  But, it is not 10 instructions, instead 20, and it uses self modifying code.
 
-I also have a 10 instruction version, which uses double-self modifying code to carve the 10 long instructions up into the above 20 instruction routine.  Unfortunaly, the 10 instruction version needs 2 of your punch cards.
+Can this be done in 10 instructions?  Yes, if you use double-self modifying code, and it is cheating somewhat.  Unfortunaly, the 10 instruction version does not fit on 1 card, because some of these x86 instructions are 12 bytes long!
+
+Can I do it in 60 bytes and only 10 instructions?  I don't know.  I hope someone takes up the challenge.  But I don't have a prize for you, as I have no money.
+
+What does it Run on?
+--------------------
+
+It runs in DOSBOX.  Theoretically it will run any any 386 or higher with suitable DOS.  I believe .com files actually come from CP/M-86, so if you have a 386 running CP/M, it might work.  Someone try it!
+
 
 List of files:
-
+--------------
 
 power2.asm: Straightforward implementation using x86 AAA instruction for working with BCD and ASCII number strings.  Only prints 10 digits, no carriage returns or newlines.  Just a test to see if the basic doubling and carry algorithm was correct.
 
 p2small.asm:  Attempt to make it smaller with self-modifying code.  This version prints to 255 digits, and outputs carriage returns and newlines.  The executable is 55 bytes.  Base-64 encoded, this is 77 'columns.'
+
+Here is p2small.com in b64:
+
+	uVADv/8AMcCKhQACnhDAN5+wMIiFAAJPde5mxwb/AjENCiS6AAK0Cc0hxgYRAQzGBh4BCeLNww==
 
 
 p2mov.com:  The final version.   It is 105 bytes, but the .com file contains only 10 instructions:
