@@ -1,28 +1,44 @@
 org 100h
 section .text
 
+%define power  0xff
+%define digits 80
+
 start:
-	mov cx,848
+    mov cl,digits-1
+    mov al,'0'
+    mov di,str+1
+    rep stosb
+    mov ax, '1$'
+    stosw
+
+	mov cl,power
 double:
-	mov di, 0xff  ;lots digits
+	push cx
+	mov cl, digits
 	xor ax,ax
+	mov di, str+digits
+	mov si, di
 dd:
-	mov al,[0x200+di]	
+    std
+	lodsb
 	sahf
 	adc al,al
 	aaa
 	lahf
-	mov al,0x30 ; on first iteration, clears array.  on following interations, replaced with or
-	mov [0x200+di], al
-	dec di
-	jnz dd	
+	or al,0x30
 
+	stosb
+	loop dd
 
-	mov dword[0x2ff], 0x240a0d31  ; digit 1 cr lf and dollar sign
-	mov dx,0x200
+	mov dx,si
 	mov ah, 9
 	int 0x21
-	mov byte [ 0x111], 0x0c  ;patch mov above to 'or' to not clear
-	mov byte [0x11e], 0x09 ; cause the digit 1 and dollar sign to be moved somewhere else during next interation
-	loop double
+    pop cx
+    loop double
+
 	ret
+
+section .data
+str:
+
